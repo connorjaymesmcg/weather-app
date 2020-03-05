@@ -1,3 +1,6 @@
+// TODO: add location selector to select element 
+
+
 window.addEventListener("load", () => {
   let long;
   let lat;
@@ -5,11 +8,14 @@ window.addEventListener("load", () => {
   let temperatureDegree = document.querySelector('.temp-degree')
   let locationTimeZone = document.querySelector('.location-timezone')
   let temperatureSection = document.querySelector('.degree-section')
+  let forecast = document.querySelector('.forecast')
   const temperatureSpan = document.querySelector('.degree-section span')
+  let timeZone = document.querySelector('#location-select')
 
   let d = new Date();
+  d.toString()
 
-  document.querySelector('.date').textContent = d.getFullYear();
+  document.querySelector('.date').textContent = ` Today is ${d}`;
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -26,11 +32,13 @@ window.addEventListener("load", () => {
         .then(data => {
           console.log(data);
           const { temperature, summary, icon, humidity } = data.currently;
-          // const { summary } = data.daily;
+          // const { minSummary } = data.minutely;
+          const { } = data.daily.summary;
           // Set DOM Elements from API
           temperatureDegree.textContent = temperature;
           temperatureDescription.textContent = summary;
-          locationTimeZone.textContent = data.timezone
+          locationTimeZone.textContent = `Your timezone is ${data.timezone}`;
+          forecast.textContent = data.minutely.summary
           // Set Icon
           setIcons(icon, document.querySelector(".icon"))
 
@@ -41,7 +49,10 @@ window.addEventListener("load", () => {
             } else {
               temperatureSpan.textContent = "F";
             }
-          })
+          });
+          if (timeZone.value === "est") {
+            console.log('recorded')
+          } else { console.log('default location selected') }
         });
     });
   }
