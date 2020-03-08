@@ -1,4 +1,6 @@
 // TODO: add location selector to select element 
+// add onclick to text elements to show hourly forecast 
+// fix location selector / add functionality 
 
 
 window.addEventListener("load", () => {
