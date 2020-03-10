@@ -52,9 +52,13 @@ window.addEventListener("load", () => {
               temperatureSpan.textContent = "F";
             }
           });
-          if (timeZone.value === "est") {
-            console.log('recorded')
-          } else { console.log('default location selected') }
+          timeZone.addEventListener('click', () => {
+            if (timeZone.value === "est") {
+              
+              console.log('recorded')
+            } else { console.log('default location selected') }
+          });
+
         });
     });
   }

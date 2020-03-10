@@ -23,6 +23,15 @@ body {
   align-items: center;
 }
 
+.select-location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 .temperature {
   flex-direction: column;
 }
@@ -41,4 +50,3 @@ body {
 .degree-section h2 {
   font-size: 40px;
 }
-
